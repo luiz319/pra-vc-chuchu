@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Uma surpresa para você ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg1:#16041f;--bg2:#3b0a33;--red:#e11d48;--rose:#ff5c8a;--pink:#ffd1e3;--purple:#8b5cf6;--white:#fff;--card:rgba(255,255,255,.08);--line:rgba(255,255,255,.18);
+--script:'Great Vibes','Brush Script MT',cursive;--sans:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif;
+color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:var(--sans);color:var(--white);background:radial-gradient(1200px 700px at 15% -10%,#6d1b5e 0,transparent 60%),radial-gradient(900px 700px at 100% 20%,#3b1a8a 0,transparent 55%),linear-gradient(160deg,var(--bg2),var(--bg1));background-attachment:fixed;overflow-x:hidden}
+#hearts{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:1}
+.hh{position:absolute;bottom:-40px;color:var(--rose);animation:up linear forwards;filter:drop-shadow(0 0 6px rgba(255,92,138,.7))}
+@keyframes up{to{transform:translateY(-115vh) rotate(25deg)}}
+button,input,textarea{font:inherit}
+.btn{border:0;cursor:pointer;color:#fff;padding:14px 30px;border-radius:999px;background:linear-gradient(135deg,var(--red),var(--rose) 55%,var(--purple));box-shadow:0 8px 30px rgba(225,29,72,.45);font-weight:600;font-size:1.05rem;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 12px 38px rgba(255,92,138,.6)}
+.btn.ghost{background:var(--card);box-shadow:none;border:1px solid var(--line);padding:10px 18px;font-size:.9rem}
+/* gate */
+#gate{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;background:radial-gradient(800px 600px at 50% 40%,#5a1450,transparent 70%),linear-gradient(160deg,var(--bg2),var(--bg1));transition:opacity .9s,transform .9s,visibility .9s}
+#gate.off{opacity:0;transform:scale(1.15);visibility:hidden;pointer-events:none}
+.bigheart{font-size:clamp(70px,18vw,120px);animation:beat 1.4s infinite;filter:drop-shadow(0 0 25px rgba(255,92,138,.9))}
+@keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.18)}30%{transform:scale(1)}45%{transform:scale(1.12)}}
+#gate h1{font-family:var(--script);font-weight:400;font-size:clamp(2.4rem,9vw,4.6rem);margin:.2em 0 .6em;text-shadow:0 0 25px rgba(255,92,138,.6)}
+/* main */
+main{position:relative;z-index:2;max-width:860px;margin:0 auto;padding:60px 20px 140px}
+main.hide{display:none}
+section{margin:0 0 90px;text-align:center}
+.rv{opacity:0;transform:translateY(40px);transition:opacity 1s,transform 1s}
+.rv.in{opacity:1;transform:none}
+.names{letter-spacing:.25em;text-transform:uppercase;color:var(--pink);font-size:.85rem}
+.title{font-family:var(--script);font-weight:400;font-size:clamp(2.6rem,10vw,5.4rem);line-height:1.1;margin:.3em 0;background:linear-gradient(90deg,#fff,var(--pink),#c4b5fd);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none}
+.since{color:var(--pink);opacity:.85;margin-bottom:26px}
+.cnt{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:520px;margin:0 auto}
+.cnt div{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px 6px;backdrop-filter:blur(8px);box-shadow:0 0 30px rgba(139,92,246,.2)}
+.cnt b{display:block;font-size:clamp(1.8rem,8vw,2.8rem);font-weight:600}
+.cnt span{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--pink)}
+.tot{margin-top:16px;color:var(--pink);font-size:.95rem}
+h2{font-family:var(--script);font-weight:400;font-size:clamp(2rem,8vw,3.4rem);margin:0 0 24px}
+.letter{background:linear-gradient(160deg,rgba(255,255,255,.14),rgba(255,255,255,.05));border:1px solid var(--line);border-radius:26px;padding:clamp(24px,6vw,52px);text-align:left;white-space:pre-wrap;line-height:1.85;font-size:1.05rem;box-shadow:0 20px 60px rgba(0,0,0,.35),inset 0 0 40px rgba(255,92,138,.08)}
+.sign{display:block;text-align:right;font-family:var(--script);font-size:2rem;margin-top:12px;color:var(--pink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:22px}
+.card{margin:0;padding:10px 10px 14px;background:#fff;border-radius:18px;color:#4a1230;cursor:pointer;box-shadow:0 12px 35px rgba(0,0,0,.4),0 0 0 3px rgba(255,92,138,.55);transition:transform .35s;border:0;text-align:center;font-family:var(--script)}
+.card:nth-child(odd){transform:rotate(-2deg)}.card:nth-child(even){transform:rotate(2deg)}
+.card:hover{transform:rotate(0) scale(1.05)}
+.card img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px;display:block}
+.card figcaption{font-size:1.5rem;margin-top:8px;line-height:1.2;min-height:1.2em}
+.empty{padding:30px;border:2px dashed var(--line);border-radius:20px;color:var(--pink)}
+.finale{font-family:var(--script);font-size:clamp(2rem,7vw,3.4rem);line-height:1.3;text-shadow:0 0 30px rgba(255,92,138,.7);white-space:pre-wrap}
+/* fixed controls */
+.fab{position:fixed;z-index:30;bottom:calc(18px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:8px}
+#musicBtn{left:16px}#cfgBtn{right:16px}
+.fab button{border:1px solid var(--line);background:rgba(30,6,40,.75);backdrop-filter:blur(10px);color:#fff;border-radius:999px;padding:12px 18px;cursor:pointer;display:flex;align-items:center;gap:10px;font-weight:600}
+.eq{display:flex;gap:2px;align-items:flex-end;height:16px}.eq i{width:3px;height:4px;background:var(--rose);border-radius:2px}
+.play .eq i{animation:eq .8s infinite ease-in-out}.play .eq i:nth-child(2){animation-delay:.2s}.play .eq i:nth-child(3){animation-delay:.4s}
+@keyframes eq{50%{height:16px}}
+#cfgDot{position:fixed;z-index:30;right:10px;bottom:calc(10px + env(safe-area-inset-bottom,0px));width:34px;height:34px;border-radius:50%;border:0;background:transparent;color:#fff;opacity:.18;font-size:1rem;cursor:pointer}
+#cfgDot:hover{opacity:.8}
+/* lightbox */
+#lb{position:fixed;inset:0;z-index:50;background:rgba(10,0,16,.9);display:none;align-items:center;justify-content:center;flex-direction:column;padding:20px;cursor:zoom-out}
+#lb.on{display:flex;animation:fi .3s}@keyframes fi{from{opacity:0}}
+#lb img{max-width:100%;max-height:76vh;border-radius:16px;box-shadow:0 0 60px rgba(255,92,138,.5);border:4px solid #fff}
+#lb p{font-family:var(--script);font-size:2rem;margin:14px 0 0;text-align:center}
+/* panel */
+#panel{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);z-index:60;background:#1b0627;border-left:1px solid var(--line);transform:translateX(105%);transition:transform .4s;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px)}
+#panel.on{transform:none}
+.ph{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line);font-size:1.1rem}
+.ph button{background:none;border:0;color:#fff;font-size:1.3rem;cursor:pointer}
+.pb{overflow:auto;padding:18px 20px calc(40px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:14px}
+.pb h3{margin:14px 0 0;color:var(--rose);font-size:.85rem;letter-spacing:.15em;text-transform:uppercase}
+.pb label{display:flex;flex-direction:column;gap:6px;font-size:.85rem;color:var(--pink)}
+.pb input,.pb textarea{background:rgba(255,255,255,.08);border:1px solid var(--line);color:#fff;border-radius:12px;padding:10px 12px;width:100%}
+.pb textarea{min-height:110px;resize:vertical}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.pr{display:grid;grid-template-columns:54px 1fr auto auto;gap:8px;align-items:center}
+.pr img{width:54px;height:54px;object-fit:cover;border-radius:10px}
+.pb button{cursor:pointer;color:#fff;background:rgba(255,255,255,.12);border:1px solid var(--line);border-radius:10px;padding:9px 12px}
+.pb .btn{background:linear-gradient(135deg,var(--red),var(--purple))}
+small{color:var(--pink);opacity:.75}
+#toast{position:fixed;left:50%;bottom:90px;transform:translate(-50%,20px);background:#fff;color:#4a1230;padding:10px 18px;border-radius:999px;z-index:80;opacity:0;transition:.3s;pointer-events:none;font-weight:600}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="hearts"></div>
+<script type="application/json" id="cfg">null</script>
+
+<div id="gate">
+  <div class="bigheart">❤️</div>
+  <h1>Tenho uma surpresa para você ❤️</h1>
+  <button class="btn" id="openBtn">Clique para abrir</button>
+</div>
+
+<main id="main" class="hide">
+  <section class="rv">
+    <div class="names" id="vNames"></div>
+    <div class="title" id="vTitle"></div>
+    <div class="since" id="vSince"></div>
+    <div class="cnt"><div><b id="cY">0</b><span>Anos</span></div><div><b id="cM">0</b><span>Meses</span></div><div><b id="cD">0</b><span>Dias</span></div></div>
+    <div class="tot" id="vTot"></div>
+  </section>
+  <section class="rv">
+    <h2>Uma carta para você</h2>
+    <div class="letter"><span id="vLetter"></span><span class="sign" id="vSign"></span></div>
+  </section>
+  <section class="rv">
+    <h2>Nossos melhores momentos</h2>
+    <div class="grid" id="grid"></div>
+  </section>
+  <section class="rv"><div class="finale" id="vFinale"></div></section>
+</main>
+
+
+<div id="lb"><img id="lbi" alt=""><p id="lbc"></p></div>
+<div id="toast"></div>
+<button id="cfgDot" aria-label="Editar">⚙</button>
+
+<aside id="panel" aria-label="Personalização">
+  <div class="ph"><b>💕 Personalizar</b><button id="px" aria-label="Fechar">✕</button></div>
+  <div class="pb">
+    <h3>Textos</h3>
+    <label>Nome da namorada<input id="f-her"></label>
+    <label>Nome do namorado<input id="f-him"></label>
+    <label>Título personalizado<input id="f-title"></label>
+    <label>Data em que começamos a namorar<input id="f-date" type="date"></label>
+    <label>Carta de amor<textarea id="f-letter" style="min-height:190px"></textarea></label>
+    <label>Frase final<textarea id="f-finale"></textarea></label>
+
+    <h3>Fotos do casal</h3>
+    <div id="plist" class="pb" style="padding:0;gap:10px"></div>
+    <div class="row"><button type="button" id="addP">+ Adicionar fotos</button></div>
+    <input type="file" id="fp" accept="image/*" multiple hidden>
+
+    <h3>Música</h3>
+    <label>Link direto do áudio (mp3, ogg...)<input id="f-url" placeholder="https://.../musica.mp3"></label>
+    <div class="row"><button type="button" id="addM">Enviar arquivo de áudio</button><button type="button" id="rmM">Remover música</button></div>
+    <input type="file" id="fm" accept="audio/*" hidden>
+    <small id="mName"></small>
+
+    <h3>Salvar e compartilhar</h3>
+    <div class="row">
+      <button class="btn" type="button" id="saveB">Salvar</button>
+      <button class="btn" type="button" id="pubB">Publicar para ela</button>
+      <button type="button" id="prevB">Ver prévia da surpresa</button>
+      <button type="button" id="shareB">Compartilhar link</button>
+    </div>
+    <small>“Salvar” guarda só neste navegador. Clique em “Publicar para ela” para o link mostrar tudo isso (textos, fotos e música) para quem abrir.</small>
+    <textarea id="bk" placeholder="Configuração (backup)"></textarea>
+    <div class="row"><button type="button" id="cpB">Copiar configuração</button><button type="button" id="imB">Importar configuração</button><button type="button" id="rsB">Restaurar padrão</button></div>
+  </div>
+</aside>
+
+<script>
+const $=id=>document.getElementById(id),KEY='love-site-v1';
+const D={her:'Meu Amor',him:'Seu Namorado',title:'Para o amor da minha vida ❤️',
+letter:'Meu amor,\n\nDesde o dia em que nos conhecemos, minha vida ficou mais leve, mais bonita e cheia de cor. Você transforma os dias comuns em memórias especiais e me faz acreditar no amor todos os dias.\n\nEsta pequena surpresa é só uma forma de dizer o quanto você é importante para mim.\n\nCom todo o meu amor,',
+finale:'Eu te amo hoje, amanhã e em todas as nossas próximas histórias. ❤️',
+date:new Date(Date.now()-400*864e5).toISOString().slice(0,10),photos:[],audioUrl:'',hasFile:false,audioName:''};
+let BK=null;try{BK=JSON.parse($('cfg').textContent)}catch(e){}
+let S=load();
+function load(){try{const r=localStorage.getItem(KEY);if(r)return{...D,...BK,...JSON.parse(r)}}catch(e){}return{...D,...BK}}
+function save(q){try{const{audioData:_a,...r}=S;localStorage.setItem(KEY,JSON.stringify(r));if(!q)toast('Salvo ✓')}catch(e){toast('Sem espaço: remova algumas fotos')}}
+let tm;const sv=()=>{clearTimeout(tm);tm=setTimeout(()=>save(true),500)};
+function toast(t){const e=$('toast');e.textContent=t;e.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('on'),2200)}
+const btn=t=>{const b=document.createElement('button');b.type='button';b.textContent=t;return b};
+
+/* contador */
+function diff(s){const a=new Date(s+'T00:00:00'),n=new Date();if(isNaN(a)||a>n)return null;
+let y=n.getFullYear()-a.getFullYear(),m=n.getMonth()-a.getMonth(),d=n.getDate()-a.getDate();
+if(d<0){m--;d+=new Date(n.getFullYear(),n.getMonth(),0).getDate()}if(m<0){y--;m+=12}
+return{y,m,d,t:Math.floor((n-a)/864e5)}}
+function counter(){const r=diff(S.date);$('cY').textContent=r?r.y:0;$('cM').textContent=r?r.m:0;$('cD').textContent=r?r.d:0;
+$('vTot').textContent=r?`Isso dá ${r.t.toLocaleString('pt-BR')} dias de amor 💕`:'Escolha uma data válida em Personalizar';
+const a=new Date(S.date+'T00:00:00');$('vSince').textContent=isNaN(a)?'':'Juntos desde '+a.toLocaleDateString('pt-BR',{day:'numeric',month:'long',year:'numeric'})}
+
+/* render */
+function render(){$('vNames').textContent=`${S.her} ❤ ${S.him}`;$('vTitle').textContent=S.title;
+$('vLetter').textContent=S.letter;$('vSign').textContent='— '+S.him;$('vFinale').textContent=S.finale;
+document.title=S.title.replace(/\s*[❤️💕]+\s*$/u,'')||'Uma surpresa para você';counter();gal()}
+function gal(){const g=$('grid');g.innerHTML='';
+if(!S.photos.length){const e=document.createElement('div');e.className='empty';e.textContent='Nossas fotos vão aparecer aqui 📸';g.append(e);return}
+S.photos.forEach(p=>{const f=document.createElement('figure');f.className='card';const i=new Image();i.src=p.src;i.alt=p.cap||'Foto do casal';
+const c=document.createElement('figcaption');c.textContent=p.cap||'';f.append(i,c);f.onclick=()=>{$('lbi').src=p.src;$('lbc').textContent=p.cap||'';$('lb').classList.add('on')};g.append(f)})}
+$('lb').onclick=()=>$('lb').classList.remove('on');
+addEventListener('keydown',e=>{if(e.key==='Escape'){$('lb').classList.remove('on');closeP()}});
+
+/* editor */
+const F={her:'f-her',him:'f-him',title:'f-title',date:'f-date',letter:'f-letter',finale:'f-finale'};
+function fill(){for(const k in F)$(F[k]).value=S[k];$('f-url').value=S.audioUrl;$('mName').textContent=S.hasFile?'Arquivo: '+(S.audioName||'áudio enviado'):'';ed()}
+for(const k in F)$(F[k]).oninput=e=>{S[k]=e.target.value;render();sv()};
+function comp(f){return new Promise(r=>{const i=new Image,u=URL.createObjectURL(f);i.onload=()=>{const k=Math.min(1,900/Math.max(i.width,i.height)),c=document.createElement('canvas');c.width=i.width*k;c.height=i.height*k;c.getContext('2d').drawImage(i,0,0,c.width,c.height);URL.revokeObjectURL(u);r(c.toDataURL('image/jpeg',.72))};i.src=u})}
+function ed(){const l=$('plist');l.innerHTML='';
+S.photos.forEach((p,i)=>{const r=document.createElement('div');r.className='pr';const im=new Image();im.src=p.src;
+const t=document.createElement('input');t.placeholder='Legenda';t.value=p.cap||'';t.oninput=()=>{p.cap=t.value;gal();sv()};
+const rb=btn('Trocar'),db=btn('✕'),fi=document.createElement('input');fi.type='file';fi.accept='image/*';fi.hidden=true;
+rb.onclick=()=>fi.click();fi.onchange=async()=>{if(fi.files[0]){p.src=await comp(fi.files[0]);gal();ed();save()}};
+db.onclick=()=>{S.photos.splice(i,1);gal();ed();save()};r.append(im,t,rb,db,fi);l.append(r)})}
+$('addP').onclick=()=>$('fp').click();
+$('fp').onchange=async e=>{for(const f of e.target.files)S.photos.push({src:await comp(f),cap:''});e.target.value='';gal();ed();save()};
+function openP(){$('panel').classList.add('on')}function closeP(){$('panel').classList.remove('on')}
+$('px').onclick=closeP;$('cfgDot').onclick=openP;$('saveB').onclick=()=>save();$('gate').querySelector('.bigheart').onclick=e=>{if(e.detail>=3)openP()};
+
+/* música */
+const au=new Audio();au.loop=true;let playing=false,objUrl;
+const idb=()=>new Promise((res,rej)=>{try{const q=indexedDB.open('love',1);q.onupgradeneeded=()=>q.result.createObjectStore('a');q.onsuccess=()=>res(q.result);q.onerror=()=>rej()}catch(e){rej()}});
+const aop=async(m,...a)=>{const d=await idb();return new Promise((r,j)=>{const q=d.transaction('a',m==='get'?'readonly':'readwrite').objectStore('a')[m](...a);q.onsuccess=()=>r(q.result);q.onerror=()=>j()})};
+function upd(){}
+async function setAudio(){au.pause();playing=false;upd();
+if(S.audioUrl){au.src=S.audioUrl;return}
+if(S.hasFile){try{const b=await aop('get','m');if(b){objUrl&&URL.revokeObjectURL(objUrl);objUrl=URL.createObjectURL(b);au.src=objUrl;return}}catch(e){}}
+if(BK&&BK.audioData&&!S.noAudio){au.src=BK.audioData;return}
+au.removeAttribute('src')}
+function play(){if(!au.getAttribute('src'))return false;au.play().then(()=>{playing=true;upd()}).catch(()=>toast('Não foi possível tocar essa música'));return true}
+$('f-url').onchange=e=>{S.audioUrl=e.target.value.trim();S.noAudio=!S.audioUrl;if(S.audioUrl){S.hasFile=false;S.audioName='';$('mName').textContent='';aop('delete','m').catch(()=>{})}save();setAudio()};
+$('addM').onclick=()=>$('fm').click();
+$('fm').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{await aop('put',f,'m');S.hasFile=true;S.noAudio=false;S.audioName=f.name;S.audioUrl='';$('f-url').value='';$('mName').textContent='Arquivo: '+f.name;save();setAudio()}catch(x){toast('Não consegui guardar o arquivo')}e.target.value=''};
+$('rmM').onclick=()=>{S.noAudio=true;S.hasFile=false;S.audioUrl='';S.audioName='';$('f-url').value='';$('mName').textContent='';aop('delete','m').catch(()=>{});save();setAudio()};
+
+/* surpresa */
+function heart(){const h=document.createElement('i');h.className='hh';h.textContent=['❤','💕','💗','♥','💖'][Math.random()*5|0];
+h.style.cssText=`left:${Math.random()*100}vw;font-size:${12+Math.random()*22}px;animation-duration:${6+Math.random()*7}s;opacity:${.3+Math.random()*.5}`;$('hearts').append(h);setTimeout(()=>h.remove(),13500)}
+setInterval(heart,650);for(let i=0;i<10;i++)heart();
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.15});
+document.querySelectorAll('.rv').forEach(e=>io.observe(e));
+$('openBtn').onclick=()=>{for(let i=0;i<30;i++)setTimeout(heart,i*40);play();$('gate').classList.add('off');$('main').classList.remove('hide');scrollTo(0,0)};
+$('prevB').onclick=()=>{closeP();au.pause();playing=false;upd();document.querySelectorAll('.rv').forEach(e=>e.classList.remove('in'));$('main').classList.add('hide');$('gate').classList.remove('off');scrollTo(0,0)};
+
+/* compartilhar / backup */
+async function copy(t){try{await navigator.clipboard.writeText(t);return true}catch(e){const a=document.createElement('textarea');a.value=t;document.body.append(a);a.select();let ok=false;try{ok=document.execCommand('copy')}catch(x){}a.remove();return ok}}
+$('shareB').onclick=async()=>{const u=location.href;if(navigator.share){try{await navigator.share({title:S.title,url:u});return}catch(e){}}toast(await copy(u)?'Link copiado ✓':'Copie o link na barra do navegador')};
+$('cpB').onclick=async()=>{const t=JSON.stringify(S);$('bk').value=t;toast(await copy(t)?'Configuração copiada ✓':'Copie o texto da caixa')};
+$('imB').onclick=()=>{try{const o=JSON.parse($('bk').value);S={...D,...o,hasFile:false,audioName:''};fill();render();save();setAudio()}catch(e){toast('Configuração inválida')}};
+$('rsB').onclick=()=>{if(confirm('Apagar tudo e voltar ao padrão?')){S={...D};aop('delete','m').catch(()=>{});fill();render();save();setAudio()}};
+
+$('pubB').onclick=async()=>{let art=null;try{art=await claude.use('artifact')}catch(e){}
+if(!art){toast('Abra o link logado na sua conta do Claude para publicar');return}
+save(true);const c={...S,hasFile:false};delete c.audioData;delete c.noAudio;let ad=null;
+if(S.hasFile){try{const b=await aop('get','m');if(b){if(b.size>8e6)toast('Áudio acima de 8 MB não vai junto');else ad=await new Promise(r=>{const f=new FileReader;f.onload=()=>r(f.result);f.readAsDataURL(b)})}}catch(e){}}
+else if(!S.noAudio&&!S.audioUrl&&BK&&BK.audioData)ad=BK.audioData;
+if(ad)c.audioData=ad;
+const d=document.documentElement.cloneNode(true);
+d.querySelector('#cfg').textContent=JSON.stringify(c).replace(/</g,String.fromCharCode(92)+'u003c');
+['hearts','grid','plist'].forEach(i=>{d.querySelector('#'+i).innerHTML=''});
+d.querySelector('#main').className='hide';
+['gate','panel','lb','toast'].forEach(i=>{d.querySelector('#'+i).className=''});
+d.querySelector('#toast').textContent='';d.querySelector('#lbi').removeAttribute('src');
+d.querySelectorAll('.rv').forEach(e=>{e.className='rv'});
+d.querySelectorAll('script[src]').forEach(e=>e.remove());
+toast('Publicando...');
+try{await art.publish('<!DOCTYPE html>'+String.fromCharCode(10)+d.outerHTML)}catch(e){toast(e&&e.code==='conflict'?'Tente de novo':'Não consegui publicar')}};
+
+fill();render();setAudio();setInterval(counter,60000);
+</script>
+</body>
+</html>
